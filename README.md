@@ -21,5 +21,5 @@ Eco Initiative Hub is a platform dedicated to promoting environmental sustainabi
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/eco-initiative-hub.git
-   cd eco-initiative-hub
+   git clone https://github.com/JemimahAO/EcoInitiative-Hub.git
+   cd EcoInitiative-Hub.
