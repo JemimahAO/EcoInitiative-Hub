@@ -24,7 +24,7 @@ Eco Initiative Hub is a platform dedicated to promoting environmental sustainabi
    git clone https://github.com/JemimahAO/EcoInitiative-Hub.git
    cd EcoInitiative-Hub.
    
-2.**Virtual Environment:**
+2. **Virtual Environment:**
    *the project already has a virual environment consisting of the neccessary depedencies.*
    ```bash
    cd ecoinitiative
@@ -33,10 +33,9 @@ Eco Initiative Hub is a platform dedicated to promoting environmental sustainabi
 3. **Run the Project:**
    ```bash
    python manage.py runserver
-
 Visit http://localhost:8000 in your web browser to access the application.
 
-Usage
+## Usage
 Explore Initiatives:
 Browse through the list of environmental initiatives and learn how you can contribute.
 
