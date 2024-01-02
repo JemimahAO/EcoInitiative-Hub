@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+{% for thread in object_list %}
+
+<div class="thread">
+    <a href="{{ thread.get_absolute_url }}">{{ thread.title }}</a>
+    <p>{{ thread.date_created }}</p>
+</div>
+
+{% endfor %}
+
+{% endblock body %}

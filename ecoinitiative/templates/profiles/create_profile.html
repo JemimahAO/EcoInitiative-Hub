@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create Profile
+{% endblock title %}
+
+
+{% block body %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+{% endblock body %}
+    
+    

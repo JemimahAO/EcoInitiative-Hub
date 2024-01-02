@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<h1>{{ object.title }}</h1>
+
+{% for post in object.post_set.all %}
+
+<div class="post">
+    {{ post.content }}
+    <p>{{ post.date_created }}</p>
+</div>
+
+<hr>
+
+<h3>Add New Post</h3>
+<form action="{% url 'create_post' pk=object.pk %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Post</button>
+</form>
+
+{% endfor %}
+
+{% endblock body %}

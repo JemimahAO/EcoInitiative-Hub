@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<h1>Create New Thread</h1>
+
+<form action="{% url 'create_thread' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Post Thread</button>
+</form>
+{% endblock body %}

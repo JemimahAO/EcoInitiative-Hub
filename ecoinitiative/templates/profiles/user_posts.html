@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<section class="section-sm" id="post">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 mx-auto"> 
+
+
+				{% for initiative in initiatives %}
+				
+				{% if initiative %}
+					<article class="card mb-4">
+
+					<div class="post-slider">
+						<a href="{% url 'profiles:initiative_details' initiative.pk %}">
+							<img src="{{ initiative.initiative_image.url }}" class="card-img-top" alt="post-thumb">
+						</a>
+					</div>
+
+					<div class="card-body">
+						<h3 class="mb-3"><a class="post-title" href="#">{{ initiative.title }}</a></h3>
+						<ul class="card-meta list-inline">
+							<li class="list-inline-item">
+								<a href="{% url 'profiles:initiative_details' initiative.pk %}"
+									class="card-meta-event">
+									<img src="{{ initiative.organiser.profile.profile_image }}">
+									<span>{{ initiative.organiser }}</span>
+								</a>
+							</li>
+							<li class="list-inline-item">
+								<i class="ti-timer"></i>{{ initiative.date_created }}
+							</li>
+							<li class="list-inline-item">
+								<ul class="card-meta-tag list-inline">
+									<li class="list-inline-item"><a href="tags.html">Ecology</a></li>
+									<li class="list-inline-item"><a href="tags.html"></a>Environment</li>
+									<li class="list-inline-item"><a href="tags.html">Susainability</a></li>
+								</ul>
+							</li>
+						</ul>
+						<p>{{ initiative.description|safe|slice:':200' }}/p>
+							<a href="{% url 'profiles:initiative_details' initiative.pk %}"
+								class="btn btn-outline-primary">View Details</a>
+					</div>
+				</article>
+
+				{% else %}
+				<h3>
+					No Initiatives Created Yet
+					<a href="{% url 'tugoingewa:create_initiative' %}" class="btn btn-default">Create One Here</a>
+				</h3>
+				{% endif %}
+					
+				
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+</section>
+
+{% include 'Include/footer.html' %}
+
+{% endblock body %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{%block title%} Initiatives {% endblock %}
+{% block body %}
+
+<div class="events-header stories-bg">
+    <div class="container">
+        <div class="events-hero">
+            <div class="hero-text">
+                <h2 class="mb-3" style="color: #71c55d;">INITIATIVES</h2>
+                <p style="color: whitesmoke;">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quo aliquam veniam earum recusandae hic,
+                    atque architecto reprehenderit expedita aut!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <div class="row no-gutters-lg">
+                <div class="col-12 mt-5 d-flex">
+                    <h2 class="section-title mt-5">Latest Projects</h2>
+                    <h3 class="ms-auto">
+                        <a href="{% url 'tugoingewa:create_initiative' %}">Create Initiative</a>
+                    </h3>
+                </div>
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="row">
+
+                        {% for initiative in initiatives %}
+                        {% include 'Include/initiatives_list.html' %}
+                        {% endfor %}
+
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <nav class="mt-4">
+                                        <!-- pagination -->
+                                        <nav class="mb-md-50">
+                                            <ul class="pagination justify-content-center">
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#!" aria-label="Pagination Arrow">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                                            fill="currentColor" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                                <li class="page-item active "> <a href="index.html" class="page-link">
+                                                        1
+                                                    </a>
+                                                </li>
+                                                <li class="page-item"> <a href="#!" class="page-link">
+                                                        2
+                                                    </a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#!" aria-label="Pagination Arrow">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                                            fill="currentColor" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+
+                                        {% if is_paginated %}
+                                        {% if page_obj.has_previous %}
+                                        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                                        <a class="btn btn-outline-info mb-4"
+                                            href="{{ page_obj.previous_page_number}}">Previous</a>
+                                        {% endif %}
+                                        {% for num in page_obj.paginator.page_range %}
+                                        {% if page_obj.number == num %}
+                                        <a class="btn btn-info mb-4" href=" ?page={{ num }}">{{ num }}</a>
+                                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <a
+                                            class="btn btn-outline-info mb-4" href=" ?page={{ num }}">{{ num }}</a>
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% if page_obj.has_next %}
+                                            <a class="btn btn-outline-info mb-4"
+                                                href="?page={{ page_obj.next_page_number }}">Next</a>
+                                            <a class="btn btn-outline-info mb-4"
+                                                href="{{ page_obj.paginator.num_pages }}">Last</a>
+                                            {% endif %}
+                                            {% endif %}
+
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="widget-blocks">
+                        <div class="row">
+                            {% include 'Include/stories_aside.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock body %}

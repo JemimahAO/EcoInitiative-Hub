@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Create Initiative
+{% endblock title %}
+
+{% block body %}
+
+  <section class="section-sm mt-5">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-lg-8 mx-auto mt-5">
+          
+          <div class="content my-5">
+            <h2 id="we-would-love-to-hear-from-you">Add An Initiative&hellip;.</h2>
+            <p>Initiatives that are Created Successfully will be Public Upon Upload</p>
+          </div>
+          
+          <form method="POST" action="." enctype="multipart/form-data">
+       
+                {% csrf_token %}
+                {{ form|crispy }}
+
+            <button type="submit" class="btn btn-default btn-lg btn-warning">Create Initiative</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock body %}

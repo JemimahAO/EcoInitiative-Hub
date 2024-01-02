@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Delete Event {% endblock title %}
+
+{% block body %}
+
+
+{% if user.is_authenticated %}
+{% if user.id == event.creator.id %}
+<h1 class="my-2">Delete Event</h1>
+<div class="form-group my-4">
+    <form method="post">
+        {% csrf_token %}
+
+        DELETE : {{ event.title }}
+        <br>
+        Are you sure???
+        <button class="btn btn-warning d-block my-5">Delete Event</button>
+    </form>
+</div>
+
+{% else %}
+<div class="container">
+    <h2>You Cannot access this Page and u
+        know it
+    </h2>
+</div>
+{% endif %}
+{% else %}
+<div class="container">
+    <h2>Please Login in to access this page</h2>
+    <ul class="my-5">
+        <a href="{% url 'register' %}" class="btn btn-secondary mx-2">Sign Up</a>
+        <a href="{% url 'login' %}" class="btn btn-secondary mx-2">Login</a>
+    </ul>
+</div>
+{% endif %}
+
+{% endblock body %}

@@ -1,0 +1,28 @@
+{% load thumbnail %}
+
+<div class="col-lg-6 col-md-6 mb-4">
+    <article class="card article-card article-card-sm h-100">
+        <a href="{% url 'tugoingewa:initiative_details' initiative.slug %}">
+            <div class="card-image">
+                <div class="post-info">
+                    <span class="text-uppercase">{{ initiative.start_date}}</span>
+                    <span class="text-uppercase">{{ initiative.end_date }}</span>
+                </div>
+                {% thumbnail initiative.initiative_image "400x400" crop="center" as im %}
+                <img src="{{im.url }}" alt="{{ initiative.author }}" width="{{ im.width }}" height="{{ im.width }}">
+                {% endthumbnail %}
+            </div>
+        </a>
+        <div class="card-body px-0 pb-0">
+            <ul class="post-meta mb-2">
+                <li> <a href="#!">Ecology</a>
+                </li>
+            </ul>
+            <h2><a class="post-title" href="{% url 'tugoingewa:initiative_details' initiative.slug %}">{{ initiative.title }}</a></h2>
+            <p class="card-text">{{ initiative.description|safe|slice:":130" }} ...</p>
+            <div class="content"> <a class="read-more-btn" href="{% url 'tugoingewa:initiative_details' initiative.slug %}">View
+                    initiative Details</a>
+            </div>
+        </div>
+    </article>
+</div>

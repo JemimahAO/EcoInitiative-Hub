@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}
+User Profile
+{% endblock title %}
+
+
+{% block link %}
+<link rel="stylesheet" href="../../static/guest_user/css/profile.css">
+{% endblock link %}
+
+
+{% load static %}
+{% block body %}
+
+
+<div class="page-content page-container" id="pagecontent">
+	<div class="padding">
+		<div class="row container d-flex justify-content-center">
+
+			<div class="col-md-8">
+				<div class="card p-3 py-4">
+
+					<div class="text-center" id="profile_image">
+						<img src="{{ user.profile.profile_image.url }}" alt="" class="rounded-circle">
+					</div>
+
+					<div class="text-center mt-2">
+						<h4 class="my-3 mb-0">
+							{{user.profile.last_name}} {{ user.profile.surname }}
+						</h4>
+						<span>
+							{{ user.username }}
+						</span>
+						<h5 class="mt-2">
+							{{ user.profile.proffession }}
+						</h5>
+
+						<h5 class="mt-2">
+							<span style="color: #71c55d;">{{ total_posts }} </span> Initiatives Created 
+						</h5>
+
+						<div class="px-4 mt-1">
+							<p class="fonts">
+								{{ user.profile.bio|safe }}
+							</p>
+						</div>
+
+						<ul class="social-list">
+							<li>
+								<a href="#"><i class="bi bi-facebook"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="bi bi-instagram"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="bi bi-twitter"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="bi bi-linkedin"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="bi bi-google"></i></a>
+							</li>
+						</ul>
+
+						<div class="buttons">
+
+							{% if request.user.is_authenticated %}
+							<a href="#" class="edit btn btn-default px-4 ms-3">
+								Edit Profile
+							</a>
+							{% endif %}
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+</div>
+
+{% endblock body %}

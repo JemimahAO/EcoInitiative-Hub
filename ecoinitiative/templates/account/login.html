@@ -1,0 +1,45 @@
+{% extends "account/base_entrance.html" %}
+
+{% block h1 %}
+Sign In
+{% endblock h1 %}
+
+{% block h12 %}
+Sign In
+{% endblock h12 %}
+
+{% load i18n %}
+{% load allauth account socialaccount %}
+{% block title %}
+{% trans "Sign In" %}
+{% endblock title %}
+{% block content %}
+
+{% element h1 %}
+{% trans "Sign In" %}
+{% endelement %}
+
+<div class="class mt-3">
+    <p>
+        {% blocktrans %}If you have not created an account yet, then please
+        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+    </p>
+    {% url 'account_login' as login_url %}
+    {% element form form=form method="post" action=login_url tags="entrance,login" %}
+    {% slot body %}
+    {% csrf_token %}
+    {% element fields form=form unlabeled=True %}
+    {% endelement %}
+    {% if redirect_field_value %}
+    <input class="form-control" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    {% endslot %}
+    {% slot actions %}
+    {% element button type="submit" tags="prominent,login" %}
+    {% trans "Sign In" %}
+    {% endelement %}
+    {% endslot %}
+    {% endelement %}
+</div>
+
+{% endblock content %}

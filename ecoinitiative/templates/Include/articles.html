@@ -1,0 +1,28 @@
+{% load thumbnail %}
+
+<div class="col-md-6 mb-4">
+    <article class="card article-card article-card-sm h-100">
+        <a href="{% url 'tugoingewa:details' story.pk %}">
+            <div class="card-image">
+                <div class="post-info">
+                    <span class="text-uppercase">{{ story.date_created }}</span>
+                    <span class="text-uppercase">{{ story.readtime }}</span>
+                </div>
+                {% thumbnail story.story_image "400x400" crop="center" as im %}
+                <img src="{{im.url }}" alt="{{ story.author }}" width="{{ im.width }}" height="{{ im.width }}">
+                {% endthumbnail %}
+            </div>
+        </a>
+        <div class="card-body px-0 pb-0">
+            <ul class="post-meta mb-2">
+                <li> <a href="#!">Ecology</a>
+                </li>
+            </ul>
+            <h2><a class="post-title" href="{% url 'tugoingewa:details' story.pk %}">{{ story.title }}</a></h2>
+            <p class="card-text">{{ story.Story|safe|slice:":130" }} ...</p>
+            <div class="content"> <a class="read-more-btn" href="{% url 'tugoingewa:details' story.pk %}">Read Full
+                    Story</a>
+            </div>
+        </div>
+    </article>
+</div>

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Contact Us
+{% endblock title %}
+
+{% block body %}
+
+  <section class="section-sm py-5 my-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          
+          <div class="content mb-5">
+            <h1 class="section-title my-5 text-center">
+              CONTACT US
+            </h1>
+            <h2 id="we-would-love-to-hear-from-you">We would Love To Hear From You&hellip;.</h2>
+            <p>Send a message using the form below</p>
+          </div>
+          
+          <form method="POST" action="">
+            <div class="form-group my-3">
+              <label for="name">Your Name (Required)</label>
+              <input type="text" name="name" id="name" class="form-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group my-3">
+              <label for="email">Your Email Address (Required)</label>
+              <input type="email" name="email" id="email" class="form-control" placeholder="johndoe@gmail.com" required>
+            </div>
+            <div class="form-group my-3">
+              <label for="email">Reason For Contact</label>
+              <input type="email" name="email" id="email" class="form-control" placeholder="Inquiry">
+            </div>
+            <div class="form-group my-3">
+              <label for="message">Your Message Here</label>
+              <textarea name="message" id="message" class="form-control" placeholder="Lorem ipsum dolor sit amet..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-lg btn-warning my-3">Send Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include 'Include/footer.html' %}
+
+{% endblock body %}

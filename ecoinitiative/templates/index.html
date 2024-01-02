@@ -1,0 +1,363 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+Home
+{% endblock title %}
+
+
+{% block body %}
+
+<!-- start of banner -->
+<section class="banner mt-lg-5">
+  <div class="hero">
+    <div class="container">
+      <div class="text">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam vero aliquam voluptate soluta quibusdam
+          exercitationem tenetur dignissimos iure? Illo enim excepturi animi quia beatae necessitatibus.
+        </p>
+        <a href="#" class="btn btn-default mt-3">Join The Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end of banner -->
+
+<main id="main">
+  <!-- ======= Features Section ======= -->
+  <section id="features" class="padd-section text-center">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title text-center">
+        <h2>Explore Local Sustainabity</h2>
+        <p class="separator">Become a part of Positive Change in your Community.Discover and contribute to local
+          environmental initiatives,<br> join events, and collaborate for a greener Future.</p>
+      </div>
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-block">
+            <!-- <img src="assets/img/svg/paint-palette.svg" alt="img"> -->
+            <i class="bi bi-person-fill h1" style="color: #71c55d;"></i>
+            <h4>Discover Initiatives</h4>
+            <p>Explore Local projects dedicated to environmental Sustainabity and Community well-being.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-block">
+            <!-- <img src="assets/img/svg/vector.svg" alt="img"> -->
+            <i class="bi bi-calendar-fill h1" style="color: #71c55d;"></i>
+            <h4>Attend Green Events</h4>
+            <p>Join eco-friendly events and workshops to learn, connect, and contribute to a greener world.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-block">
+            <!-- <img src="assets/img/svg/design-tool.svg" alt="img"> -->
+            <i class="bi bi-house-fill h1" style="color: #71c55d;"></i>
+            <h4>Collarborate for Change</h4>
+            <p>Be part of collarborative efforts, propose new projects, and join forces for a positive impact.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-block">
+            <!-- <img src="assets/img/svg/asteroid.svg" alt="img"> -->
+            <i class="bi bi-book-fill h1" style="color: #71c55d;"></i>
+            <h4>Learn sustainability</h4>
+            <p>Expand your eco-knowledge with educational resources on sustainability practices and environmental
+              stewardship.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-block">
+            <!-- <img src="assets/img/svg/asteroid.svg" alt="img"> -->
+            <i class="bi bi-people-fill h1" style="color: #71c55d;"></i>
+            <h4>Community Engagement</h4>
+            <p>Connect with like-minded individals, businesess, and organisations woring towards a sustainable future.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-block">
+            <!-- <img src="assets/img/svg/cloud-computing.svg" alt="img"> -->
+            <i class="bi bi-envelope-fill h1" style="color: #71c55d;"></i>
+            <h4>Green Lifestyle Tips</h4>
+            <p>Recieve tips and insights for integrating eco-friendly habits into your daily life and routines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Features Section -->
+
+  <!-- ======= About Us Section ======= -->
+  <section id="about-us" class="about-us padd-section">
+    <div class="container" data-aos="fade-up">
+      <h2 class="section-title text-center" style="color: #71c55d;">WHO ARE WE??</h2>
+      <div class="row g-5 justify-content-center">
+
+        <div class="col-md-6">
+          <img class="img-fluid" src="{% static 'guest_user/images/about.jfif' %}" alt="About" data-aos="zoom-in"
+            data-aos-delay="100">
+        </div>
+
+        <div class="col-md-6">
+          <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+            <p>Welcome to EcoInitative hub, where our passion for sustainabiity meets community action. We are dedicated
+              to connecting individuals, businesess, and organisations, fostering collarboration, for a greener and more
+              sustainable world.
+            </p>
+
+            <ul class="list-unstyled">
+              <h4>Mission</h4>
+              <li><i class="vi bi-chevron-right"></i> Empower positive environmental Change by connecting communities,
+                fostring collaboration, and driving impactful initiaives. </li>
+              <hr>
+              <h4>Vission</h4>
+              <li><i class="vi bi-chevron-right"></i> Strive for a sustainable future where every indiviual actively
+                contributes to a global network of positive environmental change.</li>
+            </ul>
+            <a class="btn btn-default" href="#">Read More</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><!-- End About Us Section -->
+
+  <!-- ======= Stories Section ======= -->
+  <section id="screenshots" class="padd-section text-center">
+
+    <div class="container" data-aos="fade-up">
+      <div class="section-title text-center">
+        <h2>Stories From Nature | The Journal</h2>
+        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+      </div>
+
+      <div class="screens-slider swiper">
+        <div class="swiper-wrapper mt-5 align-items-center">
+
+          {% for story in stories %}
+          <div class="swiper-slide card bg-transparent border-0">
+            <a href="{% url 'tugoingewa:details' story.id %}">
+              {% thumbnail story.story_image "300x200" crop="center" as im %}
+              <img class="card-img-top" src="{{im.url }}" alt="{{ story.author }}" width="{{ im.width }}"
+                height="{{ im.height }}">
+              {% endthumbnail %}
+            </a>
+            <div class="card-body">
+              <h2 class="card-title">
+                <a class="opacity-75-onHover"
+                  href="{% url 'tugoingewa:details' story.id %}">{{story.title|upper|slice:":20" }}</a>
+              </h2>
+              <ul class="post-meta">
+                <li class="d-inline-block">
+                  <span class="bi bi-clock text-success"></span>
+                  <a class="ml-1" href="#">{{ story.date_created }}</a>
+                </li>
+                <li class="d-inline-block">
+                  <span class="bi bi-list text-success"></span>
+                  <a class="ml-1" href="#">Photography</a>
+                </li>
+              </ul>
+
+              <a href="{% url 'tugoingewa:details' story.id %}">Read More <i class="bi bi-chevron-right"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+        <div class="swiper-pagination mt-5"></div>
+      </div>
+    </div>
+
+  </section><!-- End Stories Section -->
+
+  <!-- ======= Projects Section ======= -->
+  <section id="blog" class="padd-section">
+
+    <div class="container" data-aos="fade-up">
+      <div class="section-title text-center">
+        <h2>Latest Projects</h2>
+        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+      </div>
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+
+        {% for project in projects %}
+        <div class="col-md-6 col-lg-4 my-2">
+          <div class="block-blog text-left">
+            <a href="{% url 'tugoingewa:initiative_details' project.slug %}">
+              {% thumbnail project.initiative_image "300x200" crop="center" as im %}
+              <img class="card-img-top" src="{{im.url }}" alt="{{ project.title }}" width="{{ im.width }}"
+                height="{{ im.height }}">
+              {% endthumbnail %}
+            </a>
+            <div class="content-blog">
+              <h4><a href="#">{{ project.title }}</a></h4>
+              <span>{{ project.start_date }}</span>
+              <a class="float-end readmore" href="{% url 'tugoingewa:initiative_details' project.slug %}">Read More</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        <div class="col-10 mt-md-5">
+          <a class="btn btn-default" href="#">Check Out Other Projects</a>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Blog Section -->
+
+    <!-- ======= Stories Section ======= -->
+    <section id="screenshots" class="padd-section text-center">
+
+      <div class="container" data-aos="fade-up">
+        <div class="section-title text-center">
+          <h2>Our Events</h2>
+          <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+        </div>
+  
+        <div class="screens-slider swiper">
+          <div class="swiper-wrapper mt-5 align-items-center">
+  
+            {% for event in events %}
+            <div class="swiper-slide card bg-transparent border-0">
+              <a href="{% url 'tugoingewa:details' event.id %}">
+                {% thumbnail event.event_image "300x200" crop="center" as im %}
+                <img class="card-img-top" src="{{im.url }}" alt="{{ event.author }}" width="{{ im.width }}"
+                  height="{{ im.height }}">
+                {% endthumbnail %}
+              </a>
+              <div class="card-body">
+                <ul class="post-meta">
+                  <li class="d-inline-block">
+                    <span class="bi bi-clock text-success"></span>
+                    <a class="ml-1" href="#">{{ event.date_created }}</a>
+                  </li>
+                  <li class="d-inline-block">
+                    <span class="bi bi-list text-success"></span>
+                    <a class="ml-1" href="#">Photography</a>
+                  </li>
+                </ul>
+  
+                <a href="{% url 'tugoingewa:details' event.id %}">Read More <i class="bi bi-arrow-right-short"></i></a>
+              </div>
+            </div>
+            {% endfor %}
+  
+          </div>
+          <div class="swiper-pagination mt-5"></div>
+        </div>
+      </div>
+  
+    </section><!-- End Stories Section -->
+  
+
+  <!-- ======= Newsletter Section ======= -->
+  <section id="newsletter" class="newsletter text-center">
+    <div class="overlay padd-section">
+      <div class="container" data-aos="zoom-in">
+        <div class="section-title text-center">
+          <h2>SUBSCRIBE TO OUR NEWS LETTER</h2>
+          <p class="separator">Become a part of Positive Change in your Community.Discover and contribute to local
+            environmental initiatives,<br> join events, and collaborate for a greener Future.</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-9 col-lg-6">
+            <form class="d-flex" method="POST" action="#">
+              <input type="email" class="form-control " placeholder="Email Adress" name="email">
+              <button type="submit" class="btn"><i class="bi bi-location-arrow"></i>Subscribe</button>
+            </form>
+          </div>
+        </div>
+
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+          <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+          <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+          <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+        </ul>
+
+      </div>
+    </div>
+  </section><!-- End Newsletter Section -->
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="padd-section">
+
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Contact</h2>
+        <p class="separator">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+      </div>
+
+      <div class="row mt-5 justify-content-center">
+
+        <div class="col-lg-3 col-md-4">
+
+          <div class="info">
+            <div>
+              <i class="bi bi-geo-alt"></i>
+              <p>A108 Boulevard <br> Kampala, Uganda</p>
+            </div>
+
+            <div class="email">
+              <i class="bi bi-envelope"></i>
+              <p>info@ecoinitiative.com</p>
+            </div>
+
+            <div>
+              <i class="bi bi-phone"></i>
+              <p>+256 7568 64573</p>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+
+        </div>
+
+        <div class="col-lg-5 col-md-8">
+          <div class="form">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group mt-3">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Contact Section -->
+
+</main>
+
+{% include 'Include/footer.html' %}
+
+{% endblock body %}
