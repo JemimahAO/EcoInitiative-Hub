@@ -36,19 +36,19 @@ Eco Initiative Hub is a platform dedicated to promoting environmental sustainabi
 Visit http://localhost:8000 in your web browser to access the application.
 
 ## Usage
-Explore Initiatives:
+- **Explore Initiatives:**
 Browse through the list of environmental initiatives and learn how you can contribute.
 
-Discover Events:
+- **Discover Events:**
 Stay updated on upcoming events related to sustainability. Participate and connect with others who share similar interests.
 
-Share Your Story:
+-**Share Your Story:**
 Contribute to the community by sharing your personal or organizational stories of positive environmental impact.
 
-Collaborate with Others:
+- **Collaborate with Others:**
 Engage with fellow users, exchange ideas, and collaborate on initiatives for a greener world.
 
-Contributing
+- **Contributing**
 We welcome contributions from the community! If you have ideas for new features, bug fixes, or improvements, please open an issue or submit a pull request.
 
 ## License
