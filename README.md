@@ -51,6 +51,6 @@ Engage with fellow users, exchange ideas, and collaborate on initiatives for a g
 Contributing
 We welcome contributions from the community! If you have ideas for new features, bug fixes, or improvements, please open an issue or submit a pull request.
 
-License
+## License
 This project is licensed under the MIT License.
 
