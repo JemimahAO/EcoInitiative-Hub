@@ -25,7 +25,7 @@ Eco Initiative Hub is a platform dedicated to promoting environmental sustainabi
    cd EcoInitiative-Hub.
    
 2.**Virtual Environment:**
-   the project already has a virual environment consisting of the neccessary depedencies.
+   *the project already has a virual environment consisting of the neccessary depedencies.*
    ```bash
    cd ecoinitiative
    venv/scripts/activate.
@@ -33,3 +33,24 @@ Eco Initiative Hub is a platform dedicated to promoting environmental sustainabi
 3. **Run the Project:**
    ```bash
    python manage.py runserver
+
+Visit http://localhost:8000 in your web browser to access the application.
+
+Usage
+Explore Initiatives:
+Browse through the list of environmental initiatives and learn how you can contribute.
+
+Discover Events:
+Stay updated on upcoming events related to sustainability. Participate and connect with others who share similar interests.
+
+Share Your Story:
+Contribute to the community by sharing your personal or organizational stories of positive environmental impact.
+
+Collaborate with Others:
+Engage with fellow users, exchange ideas, and collaborate on initiatives for a greener world.
+
+Contributing
+We welcome contributions from the community! If you have ideas for new features, bug fixes, or improvements, please open an issue or submit a pull request.
+
+License
+This project is licensed under the MIT License.
