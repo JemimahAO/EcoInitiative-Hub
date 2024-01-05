@@ -1,7 +1,8 @@
 dj-database-url
 django
+django-allauth
 mysqlclient
 Pillow
 django-crispy-forms
-ckeditor
+django-ckeditor
 sorl-thumbnail
