@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from django.contrib.auth.models import User
 from sorl.thumbnail import ImageField
 from ckeditor.fields import RichTextField
@@ -41,20 +42,33 @@ STATUS = (
 )
 
 class Initiative(models.Model):
-    title =  models.CharField(max_length = 255, unique=True)
+    title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=255, unique=True)
-    organiser = models.ForeignKey(User, on_delete = models.CASCADE, related_name='initiative_posts', null=True)
-    date_created = models.DateTimeField(auto_now_add = True)
+    organiser = models.ForeignKey(User, on_delete=models.CASCADE, related_name='initiative_posts', null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
     description = RichTextField()
     initiative_image = ImageField(upload_to="initiatives/")
     start_date = models.DateField()
     end_date = models.DateField()
     status = models.IntegerField(choices=STATUS, default=0)
     goals = RichTextField()
-    category = models.CharField(max_length = 255, default='Sustainabilility')
+    category = models.CharField(max_length=255, default='Sustainability')
 
     def __str__(self):
         return self.title
+
+class InitiativeForm(forms.ModelForm):
+    class Meta:
+        model = Initiative
+        fields = ['title', 'slug', 'organiser', 'description', 'initiative_image', 'start_date', 'end_date', 'status', 'goals', 'category']
+        widgets = {
+            'start_date': forms.DateInput(attrs={'type': 'date'}),
+            'end_date': forms.DateInput(attrs={'type': 'date'}),
+        }
+        input_formats = {
+            'start_date': ['%Y-%m-%d'],
+            'end_date': ['%Y-%m-%d'],
+        }
     
 
 class Contact(models.Model):

@@ -52,14 +52,14 @@
                                                         </svg>
                                                     </a>
                                                 </li>
-                                                <li class="page-item active "> <a href="index.html" class="page-link">
+                                                <!-- <li class="page-item active "> <a href="index.html" class="page-link">
                                                         1
                                                     </a>
                                                 </li>
                                                 <li class="page-item"> <a href="#!" class="page-link">
                                                         2
                                                     </a>
-                                                </li>
+                                                </li> -->
                                                 <li class="page-item">
                                                     <a class="page-link" href="#!" aria-label="Pagination Arrow">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
@@ -72,26 +72,19 @@
                                             </ul>
                                         </nav>
 
-                                        {% if is_paginated %}
-                                        {% if page_obj.has_previous %}
-                                        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-                                        <a class="btn btn-outline-info mb-4"
-                                            href="{{ page_obj.previous_page_number}}">Previous</a>
-                                        {% endif %}
+                                        <!-- {% if is_paginated %} -->
+                                        
                                         {% for num in page_obj.paginator.page_range %}
-                                        {% if page_obj.number == num %}
-                                        <a class="btn btn-info mb-4" href=" ?page={{ num }}">{{ num }}</a>
-                                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <a
-                                            class="btn btn-outline-info mb-4" href=" ?page={{ num }}">{{ num }}</a>
+                                            {% if page_obj.number == num %}
+                                                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
                                             {% endif %}
-                                            {% endfor %}
-                                            {% if page_obj.has_next %}
-                                            <a class="btn btn-outline-info mb-4"
-                                                href="?page={{ page_obj.next_page_number }}">Next</a>
-                                            <a class="btn btn-outline-info mb-4"
-                                                href="{{ page_obj.paginator.num_pages }}">Last</a>
-                                            {% endif %}
-                                            {% endif %}
+                                        {% endfor %}
+                                        
+                                        
+                                    <!-- {% endif %} -->
+                                    
 
                                     </nav>
                                 </div>

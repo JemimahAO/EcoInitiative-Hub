@@ -17,7 +17,7 @@ Create Initiative
             <p>Initiatives that are Created Successfully will be Public Upon Upload</p>
           </div>
           
-          <form method="POST" action="." enctype="multipart/form-data">
+          <form method="POST" action="{% url 'tugoingewa:create_initiative' %}" enctype="multipart/form-data">
        
                 {% csrf_token %}
                 {{ form|crispy }}

@@ -5,7 +5,7 @@ from django.views.generic import TemplateView, DetailView, FormView, ListView, U
 from .models import Event, Story, Initiative, Contact
 from .forms import AddEventForm
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 import requests
@@ -58,7 +58,7 @@ class TermsView(TemplateView):
     template_name = "terms.html"
 
 class SuccessView(TemplateView):
-    template_name = "success/success.html"
+    template_name = "initiatives/initiatives.html"
 
 class success(TemplateView):
     template_name = "success/success.html"
@@ -114,14 +114,18 @@ class CreateInitiative(CreateView):
     model = Initiative
     template_name = 'initiatives/create_initiative.html'
     fields = ['title', 'initiative_image', 'description', 'start_date', 'end_date', 'goals', 'status']
-    success_url = reverse_lazy('success')
 
     def form_valid(self, form):
         obj = form.save(commit=False)
         obj.organiser = self.request.user
         obj.slug = slugify(form.cleaned_data['title'])
         obj.save()
-        return super().form_valid(form)
+
+        messages.success(self.request, 'Your Initiative Has been Created Successfully')
+        
+        # Use the 'redirect' function to go to a specific URL
+        return redirect('tugoingewa:initiatives')
+
 
 class UpdateInitiative(UpdateView):
     model = Initiative
@@ -164,12 +168,14 @@ class AddStory(CreateView):
     template_name = 'addstory.html'
     fields = '__all__'
     
-    def get_success_url(self):
-        messages.success(
-            self.request, 'Your Story Has been Created Successfully'
-        )
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.save()
+
+        messages.success(self.request, 'Your Story Has been Created Successfully')
         
-        return reverse_lazy('stories')
+        # Use the 'redirect' function to go to a specific URL
+        return redirect('tugoingewa:stories')
     
 class UpdateStory(UpdateView):
     model = Story

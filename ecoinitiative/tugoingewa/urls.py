@@ -7,7 +7,7 @@ from .views import (InitiativesList, InitiativeDetailView, EventDetailView, Stor
 app_name = 'tugoingewa'
 
 urlpatterns = [
-    path('success_url/', SuccessView.as_view() , name='success'),
+    path('success/', SuccessView.as_view(), name='success'),
     path('events/', EventsView.as_view() , name='events'),
     path('addstory/', AddStory.as_view() , name='addstory'),
     path('update_story/<int:pk>/edit/', UpdateStory.as_view() , name='updatestory'),
@@ -22,6 +22,7 @@ urlpatterns = [
     path('create_initiative/', CreateInitiative.as_view() , name='create_initiative'),
     path('initiatives/', InitiativesList.as_view(), name='initiatives'),
     path('<slug:slug>/', InitiativeDetailView.as_view(), name='initiative_details'),
+    path('<int:pk>/', InitiativeDetailView.as_view(), name='initiative_details'),
     path('initiatives/<int:pk>/Update/', UpdateInitiative.as_view(), name='update_initiative'),
     path('initiatives/<int:pk>/delete/', DeleteInitiative.as_view(), name='delete_initiative'),
 ]

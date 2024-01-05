@@ -19,7 +19,8 @@ Contact Us
             <p>Send a message using the form below</p>
           </div>
           
-          <form method="POST" action="">
+          <form method="POST" action=".">
+            {% csrf_token %}
             <div class="form-group my-3">
               <label for="name">Your Name (Required)</label>
               <input type="text" name="name" id="name" class="form-control" placeholder="John Doe" required>

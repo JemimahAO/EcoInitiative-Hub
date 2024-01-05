@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-g6(0m3aj(7q@p394b1i%n2a0c*9q=1n!-%g+)zsrgr4)#_5a00'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'ckeditor',
     'crispy_forms',
-    'crispy_bootstrap4',
+    'bootstrap4',
+    # 'crispy_bootstrap4',
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = ("bootstrap", "uni_form", "bootstrap4")
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,7 +67,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates/')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -177,7 +179,15 @@ SOCIALACCOUNT_PROVIDERS = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'EXAMPLE@gmail.com'
-EMAIL_HOST_PASSWORD = 'PASSWORD'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'edmcdarwin777@gmail.com'
+EMAIL_HOST_PASSWORD = 'mpzjkezogexmcyet'
+
+
+# thumbnail setup
+
+THUMBNAIL_ENGINE = 'sorl.thumbnail.engines.pil_engine.Engine'
+THUMBNAIL_ALTERNATIVE_RESOLUTIONS = [2]
+THUMBNAIL_QUALITY = 95

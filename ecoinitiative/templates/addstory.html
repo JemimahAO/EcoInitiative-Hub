@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+
 {% block title %}
 Create Initiative
 {% endblock title %}
@@ -17,12 +18,12 @@ Create Initiative
             <p>Initiatives that are Created Successfully will be Public Upon Upload</p>
           </div>
           
-          <form method="POST" action="." enctype="multipart/form-data">
-       
-                {% csrf_token %}
-                {{ form|crispy }}
-
-            <button type="submit" class="btn btn-default btn-lg btn-warning">Create Initiative</button>
+          <form method="POST" action="{% url 'tugoingewa:addstory' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form|crispy }}
+              <button type="submit" class="btn btn-default btn-lg btn-warning">Create Story</button>
+          </form>
+        
           </form>
         </div>
       </div>
