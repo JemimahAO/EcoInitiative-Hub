@@ -13,7 +13,7 @@ class Event(models.Model):
     event_date = models.DateField(blank=False, null=False)
     start_time = models.TimeField(blank=False, null=False)
     end_time = models.TimeField(blank=False, null=False)
-    description = models.extField(blank=False, null=False)
+    description = models.TextField(blank=False, null=False)
     location = models.CharField(max_length=255, blank=False, null=False)
 
     def __str__(self):
